@@ -29,6 +29,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 		})
 		
 		// about page and multiple named views
+		//
+		// NOTE: UI-Router assigns every view to an absolute name. The
+		// structure for this is viewName@stateName. The main
+		// templateUrl is named with an empty string and will take on
+		// a relative name. columnOne@about and the other are defined
+		// absolutely.
+		
 		.state('about', {
 			url: '/about',
 			views: {
