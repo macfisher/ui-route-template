@@ -30,6 +30,45 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 		
 		// about page and multiple named views
 		.state('about', {
-			// come back to this...
+			url: '/about',
+			views: {
+				// main template (relatively named)
+				'': { templateUrl: 'partial-about.html' },
+				
+				// child views defined here (absolutely named)
+				'columnOne@about': { template: 'This is column one' },
+				
+				// column two gets a separate controller
+				'columnTwo@about': {
+					templateUrl: 'table-data.html',
+					controller: 'colTwoController'
+				}
+			}
 		});
+}); // closes $routerApp.config()
+
+routerApp.controller('colTwoController', function($scope) {
+	
+	$scope.message = 'test';
+	
+	$scope.robots = [
+		{
+			name: 'Augmentor',
+			energy: 3,
+			attack: 1,
+			hp: 3
+		},
+		{
+			name: 'Security',
+			energy: 3,
+			attack: 3,
+			hp: 2
+		},
+		{
+			name: 'Repair',
+			energy: 2,
+			attack: 1,
+			hp: 4
+		}
+	];
 });
